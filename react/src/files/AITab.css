@@ -1,0 +1,60 @@
+.AI{
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+
+  .inputTab{
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+  
+    .input{
+      width: 70vw;
+      height: 50vh;
+      text-align: top left;
+      font-size: 1.5rem;
+      vertical-align: baseline;
+    }
+
+    input::placeholder{
+      height: 100%;
+      font-weight: bold;
+      text-align: left;
+      text-justify: auto;
+      vertical-align: baseline; 
+    }
+
+    button{
+        border: rgb(0, 94, 115) solid 1.5px;
+        background:rgb(198, 225, 239);
+        padding: 0;
+        font-size: 0.8em;
+        width: 10vh;
+    }
+  }
+}
+
+.date{
+  padding:none;
+  vertical-align: baseline;
+  font-size: 1.5rem;
+  display: flex;
+}
+
+.datePicker{
+  height: auto;
+  width: 20vw;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.ad{
+  font-size: 2rem;
+  flex: 1;
+  height: 80vh;
+  border: 1.5px #0F0 solid;
+  position: relative;
+  float: left;
+  width: 17vw;
+}

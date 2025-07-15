@@ -1,0 +1,21 @@
+.lists{
+    width: 76.5vw;
+    display: flex;
+    flex-direction: column;
+
+    .scheduleTabHead{
+        padding: 1vh;
+
+    }
+
+    .schedule{
+        border-radius: 0;
+        border-top: 1.5px black solid;
+        text-align: left;
+        vertical-align: baseline;
+        min-height: 10vh;
+        height: auto;
+        padding: 1vh;
+        background-color: rgb(182, 255, 244);
+    }
+}
