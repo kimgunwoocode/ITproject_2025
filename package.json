@@ -1,4 +1,5 @@
 {
+  "homepage" : "https://kimgunwoocode.github.io/",
   "name": "basic2_react",
   "private": true,
   "version": "0.0.0",
@@ -8,7 +9,9 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "node ./src/main.tsx"
+    "start": "node ./src/main.tsx",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@types/react-modal": "^3.16.3",
@@ -26,6 +29,7 @@
     "eslint": "^9.29.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
+    "gh-pages": "^6.3.0",
     "globals": "^16.2.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.34.1",
