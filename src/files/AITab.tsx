@@ -12,10 +12,8 @@ export function AIPrompt() {
 
     const [startDate, setStartDate] = useState<Date | null>(new Date());
     //const [endDate, setEndDate] = useState<Date | null>(null);
-    const onChange = (dates: [Date | null, Date | null]) => {
-        const [start] = dates;
-        setStartDate(start);
-        //setEndDate(end);
+    const onChange = (dates: Date | null) => {;
+        setStartDate(dates);
     };
 
     const formatDate : string = "yyyy/MM/dd"
@@ -31,7 +29,6 @@ export function AIPrompt() {
                     className="datePicker"
                     onChange={onChange}
                     dateFormat={formatDate}
-                    selectsRange
                     withPortal
                 />
             </div>
