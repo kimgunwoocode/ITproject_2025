@@ -16,7 +16,7 @@ export function AIPrompt() {
     const onChange = (dates: Date | null) => {;
         setStartDate(dates);
     };
-    const [inputValue, setInputValue] = useState<string>("");
+    const [inputValue, setInputValue] = useState<string>();
 
 
     const formatDate : string = "yyyy-MM-dd"
