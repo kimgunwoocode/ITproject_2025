@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+//import { spawn } from "child_process"
 
 import './AITab.css'
 
@@ -15,6 +16,8 @@ export function AIPrompt() {
     const onChange = (dates: Date | null) => {;
         setStartDate(dates);
     };
+    const [inputValue, setInputValue] = useState<string>("");
+
 
     const formatDate : string = "yyyy-MM-dd"
     //https://reactdatepicker.com/#example-custom-time-input
@@ -33,8 +36,12 @@ export function AIPrompt() {
                 />
             </div>
             <div className="inputTab">
-                <input className="input" placeholder={"일정을 입력하세요"} />
-                <button className="button2" id='in' key="enter" >입력</button>
+                <input className="input"
+                    placeholder={"일정을 입력하세요"}
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                />
+                <button className="button2" id='in' key="enter" onClick={() => console.log(inputValue)}>입력</button>
             </div>
         </div>
     );
