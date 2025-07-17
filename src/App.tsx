@@ -67,7 +67,6 @@ function App() {
         {modalControl.isScheduleOpen && <ScheduleTab {...modalControl}/>}
         {modalControl.isAIOpen && <AITab {...modalControl}/>}
       </div>
-
     </>
   )
 }

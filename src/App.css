@@ -114,7 +114,7 @@ button:hover{
   display: flex;
   list-style: none;
   flex-wrap: wrap; /*이래 하면 요소가 아래로 넘어감*/
-  height: calc(100% / 8);
+  height: 3vh;
 }
 
 .weeks li{
@@ -130,9 +130,15 @@ button:hover{
   height: calc(100% * 5 / 7);
 }
 
-.days li{
+.days .current_month{
   width: calc(100% / 7);
   position: relative;
+}
+
+.days .adjacent_month{
+  width: calc(100% / 7);
+  position: relative;
+  color: rgba(201, 200, 200, 0.71);
 }
 
 .login_menu{
