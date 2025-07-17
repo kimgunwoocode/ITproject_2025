@@ -15,7 +15,10 @@
   },
   "dependencies": {
     "@types/react-modal": "^3.16.3",
+    "axios": "^1.10.0",
     "date-fns": "^4.1.0",
+    "dayjs": "^1.11.13",
+    "dotenv": "^17.2.0",
     "firebase": "^11.10.0",
     "react": "^19.1.0",
     "react-datepicker": "^8.4.0",
@@ -36,5 +39,17 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.34.1",
     "vite": "^7.0.0"
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kimgunwoocode/ITproject_2025.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kimgunwoocode/ITproject_2025/issues"
   }
 }
