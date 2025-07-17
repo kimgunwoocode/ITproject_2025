@@ -47,7 +47,7 @@ function AITab({isAIOpen, openAITab, openScheduleTab, close} : {isAIOpen : boole
 //모달3 : 광고
 function Ad() {
   return (
-    <div className='ad'>광고</div>
+    <div className='ad'></div>
   );
 }
 
