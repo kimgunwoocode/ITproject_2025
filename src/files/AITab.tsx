@@ -11,12 +11,12 @@ export function AIPrompt() {
     //const [AIInput, setAIInput] = useState<string>(); 
 
     const [startDate, setStartDate] = useState<Date | null>(new Date());
-    const [endDate, setEndDate] = useState<Date | null>(null);
+    //const [endDate, setEndDate] = useState<Date | null>(null);
     const onChange = (dates: [Date | null, Date | null]) => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-};
+        const [start] = dates;
+        setStartDate(start);
+        //setEndDate(end);
+    };
 
     const formatDate : string = "yyyy/MM/dd"
     //https://reactdatepicker.com/#example-custom-time-input
@@ -29,8 +29,6 @@ export function AIPrompt() {
                 <DatePicker
                     selected={startDate}
                     className="datePicker"
-                    startDate={startDate}
-                    endDate={endDate}
                     onChange={onChange}
                     dateFormat={formatDate}
                     selectsRange
