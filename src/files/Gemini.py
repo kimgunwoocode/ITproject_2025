@@ -1,22 +1,19 @@
 import os
 import json
-import google.generativeai as genai
-import firebase_admin
-from firebase_admin import credentials, firestore
+import sys
 from datetime import datetime
 from dateutil import tz
+import google.generativeai as genai
 
 # ======== 1. 환경 설정 ========
 
-# Gemini API 키 (환경변수로 관리 권장)
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+if not GEMINI_API_KEY:
+    print(json.dumps({"error": "Missing GEMINI_API_KEY"}))
+    sys.exit(1)
+
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel("gemini-pro")
-
-# Firebase 초기화 (credentials.json은 Firebase 콘솔에서 다운로드)
-cred = credentials.Certificate("firebase_credentials.json")
-firebase_admin.initialize_app(cred)
-db = firestore.client()
 
 # ======== 2. 현재 날짜/시간 (한국 기준) ========
 
@@ -77,44 +74,30 @@ def build_prompt(user_input, current_date_str):
 입력 : "{user_input}"
 """
 
-# ======== 4. 자연어 일정 분석 ========
+# ======== 4. 일정 분석 ========
 
 def analyze_schedule(user_input):
     now_kst = get_kst_now()
     current_date_str = now_kst.strftime("%Y-%m-%d")
     prompt = build_prompt(user_input, current_date_str)
-
     response = model.generate_content(prompt)
 
     try:
         parsed = json.loads(response.text)
         return parsed
     except json.JSONDecodeError:
-        print("⚠️ JSON 파싱 실패:\n", response.text)
-        return None
+        return {"error": "Invalid JSON returned from Gemini", "raw": response.text}
 
-# ======== 5. Firebase 저장 ========
-
-def save_schedule_to_firestore(user_id, schedule_json):
-    try:
-        doc_ref = db.collection("users").document(user_id).collection("schedules").document()
-        doc_ref.set(schedule_json)
-        print(f"✅ 일정 저장 완료: {schedule_json}")
-    except Exception as e:
-        print(f"❌ Firebase 저장 실패: {e}")
-
-# ======== 6. 전체 실행 함수 (예시) ========
+# ======== 5. CLI 실행 ========
 
 def main():
-    user_input = input("📥 일정 입력: ").strip()
-    user_id = "example_user_id"
+    if len(sys.argv) < 2:
+        print(json.dumps({"error": "No input provided"}))
+        sys.exit(1)
 
-    structured = analyze_schedule(user_input)
-
-    if structured:
-        save_schedule_to_firestore(user_id, structured)
-    else:
-        print("❌ 일정 분석에 실패했습니다.")
+    user_input = " ".join(sys.argv[1:])
+    result = analyze_schedule(user_input)
+    print(json.dumps(result, ensure_ascii=False))
 
 if __name__ == "__main__":
     main()
