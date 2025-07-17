@@ -47,22 +47,9 @@ export function Calendar() {
                 <button className='month_nav' onClick={nextMonth}>▶</button>
             </header>
             <Weeks />
-            <ul style={{ display: "flex", flexWrap: "wrap", width: 7 * 40 }}>
+            <ul className="days">
                 {dayArr.map(day => (
-                    <li
-                        key={day}
-                        style={{
-                            width: 40,
-                            height: 40,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            listStyle: "none",
-                            border: "1px solid #ddd",
-                    }}
-                    >
-                    {day}
-                    </li>
+                    <li key={day}>{day}</li>
         ))}
       </ul>
         </div>
