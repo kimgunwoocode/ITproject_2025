@@ -16,7 +16,7 @@ export function AIPrompt() {
         setStartDate(dates);
     };
 
-    const formatDate : string = "yyyy/MM/dd"
+    const formatDate : string = "yyyy-MM-dd"
     //https://reactdatepicker.com/#example-custom-time-input
 
     return(
