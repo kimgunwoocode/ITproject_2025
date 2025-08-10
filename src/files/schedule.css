@@ -1,0 +1,68 @@
+button{
+    background-color: #ffffff;
+}
+
+.schedule{
+    width: 690px;
+    height: 864px;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.space{
+    width: 690px;
+    height: 77px;
+}
+
+.schedule_body{
+    top: 75px;
+    width: 690px;
+    height: 160px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    font-size: 32px;
+    vertical-align: top;
+    padding: 0px;
+    border-radius: 15px;
+}
+
+.schedule_head{
+    font-size: 32;
+    line-height: 35px;
+    width: 670px;
+    height: 40px;
+    padding: 0px 10px;
+    box-sizing: content-box;
+    vertical-align: baseline;
+    text-align: left;
+    border-radius: 15px;
+}
+
+.schedule_detail{
+    width: 690px;
+    height: 100px;
+    vertical-align: top;
+    text-align: left;
+    padding: 0px 5px;
+    box-sizing: content-box;
+    color: #333333;
+}
+
+.blue{
+    background-color: #41A3FF;
+    color: #333333;
+}
+
+.red{
+    background-color: #e00000;
+    color: #ffffff;
+}
+
+.green{
+    background-color: #2CC900;
+    color: #333333;
+}
+

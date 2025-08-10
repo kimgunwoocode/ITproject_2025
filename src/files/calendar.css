@@ -1,0 +1,108 @@
+.calendar {
+    font-family: sans-serif;
+    font-size: 32px;
+    width: 690px;
+    height: 864px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px 0px 0px 0px;
+}
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 0 0 0 0;
+}
+
+.month {
+    font-size: 1.5em;
+    text-align: center;
+    vertical-align: middle;
+    height: 79px;
+    padding: 0 0 0 0;
+}
+
+.month_nav {
+    font-size: 1.5em;
+    text-align: center;
+    height: 79px;
+    width: 55px;
+}
+
+
+.weeks {
+    font-size: 1em;
+    height: 64px;
+    width: 690px;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 0 0 0 0;
+    margin: 0 0;
+
+    li{
+        width : calc(690px / 7);
+    }
+
+    .Sun{
+        color: #E00000;
+    }
+
+    .Sat{
+        color: #0839FD;
+    }
+}
+
+.days {
+    font-size: 1em;
+    height: calc(721px);
+    width: 690px;
+    display: flex;
+    padding: 0 0 0 0;
+    margin: 0 0;
+    
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    .current_month{
+        font-size: 1em;
+        height: calc(721px / 5);
+        width: calc(690px / 7);
+        vertical-align: top;
+        text-align: center;
+        list-style-type: none;
+    }
+
+    .adjacent_month{
+        font-size: 1em;
+        height: calc(721px / 5);
+        width: calc(690px / 7);
+        vertical-align: top;
+        text-align: center;
+        list-style-type: none;
+        opacity: 0.3;
+    }
+
+    .sunday{
+        color: #e00000;
+    }
+
+    .saturday{
+        color: #0839FD;
+    }
+
+    .weekdays{
+        color: #1f1f1f
+    }
+}
+
+.body{
+  display: flex;
+  flex-direction: row;
+  left: 20px;
+  top: 91px;
+}

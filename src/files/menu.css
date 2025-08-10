@@ -1,0 +1,67 @@
+.hamberger_menu{
+    width: 55px;
+    height: 55px;
+    left: 42px;
+    top: 44px;
+    z-index: 10000000;
+    padding: 0;
+    display:block;
+    background-color: #ffffff;
+}
+
+img{
+    left: 0;
+    top: 0;
+}
+
+.menu_white{
+    display: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 0px 32px 42px 0px;
+
+    .X{
+        height: 55px;
+        width: 55px;
+        padding: 0;
+    }
+
+    .B{
+        width: 283px;
+        height: 79px;
+        padding: 0;
+    }
+}
+
+.menu_white.in{
+    animation: In 0.1s ease forwards;
+}
+.menu_white.out{
+    animation: Out 0.1s ease forwards;
+}
+
+@keyframes In {
+    from{
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes Out {
+    from{
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    to{
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}

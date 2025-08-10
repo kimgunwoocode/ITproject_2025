@@ -1,0 +1,112 @@
+.AI{
+    display: relative;
+    width: 690px;
+    height: 864px;
+    right: 0px;
+    top: 60px;
+    background-color: #fefefe;
+    font-family: 'Sans Serif Collection';
+    align-items: left;
+    padding: 0px 20px;
+    z-index: 10;
+}
+
+.AI_title{
+    position: relative;
+    top: 35px;
+    text-align: center;
+    font-size: 32px;
+    letter-spacing: 0%;
+    color: #000000;
+}
+
+.AI_detail{
+    position: relative;
+    top: 30px;
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 0%;
+    color: #000000;
+}
+
+.AI_X{
+    position:absolute;
+    top:10px;
+    left:10px;
+    background-color: #fefefe;
+    padding: 0;
+    width: 35px;
+    height: 35px;
+}
+
+.AI_input{
+    font-family: 'Sans Serif Collection';
+    position: relative;
+    font-size: 24px;
+    line-height:1.5;
+    caret-shape: underscore;
+    width: 640px;
+    height: 484px;
+    top:30px;
+    letter-spacing: 0%;
+    color: #000000;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.AI_get_input{
+    font-family: 'Sans Serif Collection';
+    position:relative;
+    font-size: 24px;
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    vertical-align: baseline;
+    padding: 0px;
+    top: 35px;
+    border: 1px solid #000000;
+    background-color: #fdfdfd;
+}
+
+
+.AI_input::placeholder{
+    opacity: 0.7;
+    vertical-align: top;
+    font-family: 'Sans Serif Collection';
+}
+
+input[type='text']{
+    vertical-align: baseline;
+}
+
+.AI.in{
+    animation: In 0.1s ease forwards;
+}
+.AI.out{
+    animation: Out 0.1s ease forwards;
+}
+
+
+
+@keyframes In {
+    from{
+        opacity: 0;
+        transform: translateZ(100%);
+    }
+    to{
+        opacity: 1;
+        transform: translateZ(0%);
+    }
+}
+
+@keyframes Out {
+    from{
+        opacity: 1;
+        transform: translateZ(0%);
+    }
+    to{
+        opacity: 0;
+        transform: translateZ(100%);
+    }
+}
