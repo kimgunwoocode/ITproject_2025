@@ -3,6 +3,12 @@ import './App.css'
 import { Calander_white } from './files/calendar'
 import { Menu } from './files/menu'
 
+type ScheduleItem ={
+    color: string;
+    month: number;
+    day: number;
+    schedule: string;
+}
 
 function App() {
     const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -35,10 +41,20 @@ function App() {
     }
 
 
+    //스케쥴 예시
+    const [sche, setSche] = useState<ScheduleItem[]>([]);
+
+    useEffect(() => setSche([
+        {color: "blue", month: 7, day: 1, schedule: "일정"},
+        {color: "red", month: 7, day: 30, schedule: "장바구니"},
+        {color: "green", month: 8, day: 4, schedule: "수강신청"}
+    ]), []);
+
+
   return (
     <>
     <Menu isOpen={isOpen} isVisible={isVisible} open_toggle={open_toggle} AI_toggle={AI_toggle}/>
-    <Calander_white AIIsOpen={AIIsOpen} AIIsVisible={AIIsVisible} AI_toggle={AI_toggle} handleClick={handleClick} handleOrder={handleOrder}/>
+    <Calander_white AIIsOpen={AIIsOpen} AIIsVisible={AIIsVisible} AI_toggle={AI_toggle} handleClick={handleClick} handleOrder={handleOrder} scheduleData={sche}/>
     </>
   )
 }

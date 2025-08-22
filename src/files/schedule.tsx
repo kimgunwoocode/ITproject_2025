@@ -18,18 +18,10 @@ function MonoSchedule({color, month, day, schedule} : ScheduleItem) {
 }
 
 //type 버그
-export const Schedule = ({mon} : any ) => {
-    //예시
-    const [sche, setSche] = useState<ScheduleItem[]>([]);
+export const Schedule = ({mon, scheduleData} : {mon: any, scheduleData: Array<ScheduleItem>} ) => {
     const [monthSchedule, setMonthSchedule] = useState<ScheduleItem[]>([]);
 
-    useEffect(() => setSche([
-        {color: "blue", month: 7, day: 1, schedule: "일정"},
-        {color: "red", month: 7, day: 30, schedule: "장바구니"},
-        {color: "green", month: 8, day: 4, schedule: "수강신청"}
-    ]), []);
-
-    useEffect(() => setMonthSchedule(sche.filter(item => item.month === mon)), [mon]);
+    useEffect(() => setMonthSchedule(scheduleData.filter(item => item.month === mon)), [mon]);
 
 
     return(

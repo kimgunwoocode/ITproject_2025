@@ -10,6 +10,13 @@ type DayItem = {
     isWeekend: number;
 };
 
+type ScheduleItem ={
+    color: string;
+    month: number;
+    day: number;
+    schedule: string;
+};
+
 function Weeks() {
     const [weekArr, setWeekArr] = useState<Array<string>>([]);
 
@@ -80,7 +87,7 @@ function generateDay(year: number, month: number): DayItem[] {
     return days;
 }
 
-export const Calander_white = ({AIIsOpen, AIIsVisible, AI_toggle, handleOrder, handleClick}: {AIIsOpen: boolean, AIIsVisible: boolean, AI_toggle: any, handleOrder: any, handleClick: any}) => {
+export const Calander_white = ({AIIsOpen, AIIsVisible, AI_toggle, handleOrder, handleClick, scheduleData}: {AIIsOpen: boolean, AIIsVisible: boolean, AI_toggle: any, handleOrder: any, handleClick: any, scheduleData: Array<ScheduleItem>}) => {
     const [month, setMonth] = useState(new Date()); // 현재 보고 있는 달
     const [days, setDays]   = useState<DayItem[]>([]);
     
@@ -116,7 +123,7 @@ export const Calander_white = ({AIIsOpen, AIIsVisible, AI_toggle, handleOrder, h
                 </ul>
             </div>
             {AIIsOpen || 
-                <Schedule mon={month.getMonth() + 1} />
+                <Schedule mon={month.getMonth() + 1} scheduleData={scheduleData}/>
             }
             {AIIsOpen && 
                 <AI_white isVisible={AIIsVisible} open_toggle={AI_toggle} handleOrder={handleOrder} handleClick={handleClick}/>
