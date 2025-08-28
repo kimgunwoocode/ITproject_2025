@@ -47,7 +47,8 @@ function App() {
     useEffect(() => setSche([
         {color: "blue", month: 7, day: 1, schedule: "일정"},
         {color: "red", month: 7, day: 30, schedule: "장바구니"},
-        {color: "green", month: 8, day: 4, schedule: "수강신청"}
+        {color: "green", month: 8, day: 4, schedule: "수강신청"},
+        {color: "red", month: 9, day: 1, schedule: "개강"}
     ]), []);
 
 

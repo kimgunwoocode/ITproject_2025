@@ -1,9 +1,7 @@
-import { useState } from "react";
 import menu_burger_white from '../assets/menu_buger_white.png'
 import X_img from "../assets/X.png"
 import AI_img from "../assets/AI.png"
 import Log_img from "../assets/Login.png"
-import { AI_white } from "./AIInput";
 import './menu.css'
 
 export const Menu = ({isOpen, isVisible, open_toggle, AI_toggle} : {isOpen : boolean, isVisible: boolean, open_toggle: any, AI_toggle: any}) => {
@@ -21,7 +19,6 @@ export const Menu = ({isOpen, isVisible, open_toggle, AI_toggle} : {isOpen : boo
         {isOpen ||
             <button className="hamberger_menu" onClick={open_toggle}><img src={menu_burger_white}></img></button>
         }
-        
         </>
     );
 }

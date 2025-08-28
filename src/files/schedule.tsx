@@ -18,16 +18,12 @@ function MonoSchedule({color, month, day, schedule} : ScheduleItem) {
 }
 
 //type 버그
-export const Schedule = ({mon, scheduleData} : {mon: any, scheduleData: Array<ScheduleItem>} ) => {
-    const [monthSchedule, setMonthSchedule] = useState<ScheduleItem[]>([]);
-
-    useEffect(() => setMonthSchedule(scheduleData.filter(item => item.month === mon)), [mon]);
-
+export const Schedule = ({ scheduleData} : {scheduleData: Array<ScheduleItem>} ) => {
 
     return(
         <div className="schedule">
             <div className='space' />
-            {monthSchedule.map(({color, month, day, schedule}) => (
+            {scheduleData.map(({color, month, day, schedule}) => (
                 <MonoSchedule color={color} month={month} day={day} schedule={schedule} />
             ))}
         </div>

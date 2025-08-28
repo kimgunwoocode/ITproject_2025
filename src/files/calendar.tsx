@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { Schedule } from './schedule';
 import { AI_white } from './AIInput';
-import './calendar.css'
+import left_img from '../assets/left.png'
+import right_img from '../assets/right.png'
+import './calendar.css';
 
 type DayItem = {
     date: Date;
@@ -69,8 +71,8 @@ function generateDay(year: number, month: number): DayItem[] {
         }
     }
 
-    // 3) 마지막 주 남은 칸 채우기 (총 35칸 = 7열×5행)
-    const totalSlots = 35;
+    // 3) 마지막 주 남은 칸 채우기 (총 42칸 = 7열×6행)
+    const totalSlots = 42;
     const nextDaysCount = totalSlots - days.length;
     for (let d = 1; d <= nextDaysCount; d++) {
         const date = new Date(year, month + 1, d);
@@ -87,7 +89,7 @@ function generateDay(year: number, month: number): DayItem[] {
     return days;
 }
 
-export const Calander_white = ({AIIsOpen, AIIsVisible, AI_toggle, handleOrder, handleClick, scheduleData}: {AIIsOpen: boolean, AIIsVisible: boolean, AI_toggle: any, handleOrder: any, handleClick: any, scheduleData: Array<ScheduleItem>}) => {
+export const Calander_white = ({AIIsOpen, AIIsVisible, AI_toggle, handleOrder, handleClick, scheduleData}: {AIIsOpen: boolean, AIIsVisible: boolean, AI_toggle: any, handleOrder: any, handleClick: any, scheduleData: ScheduleItem[]}) => {
     const [month, setMonth] = useState(new Date()); // 현재 보고 있는 달
     const [days, setDays]   = useState<DayItem[]>([]);
     
@@ -102,28 +104,47 @@ export const Calander_white = ({AIIsOpen, AIIsVisible, AI_toggle, handleOrder, h
     const nextMonth = () =>
         setMonth((m) => new Date(m.getFullYear(), m.getMonth() + 1, 1));
 
+    const [monthEvent, setMonthEvent] = useState<ScheduleItem[]>([]);
+    //고맙다 copilot!
+    //event 그룹화 -> 띄우기
+    useEffect(() => setMonthEvent(scheduleData.filter((item) => item.month === month.getMonth() + 1)), [scheduleData, month]);
+    const groupedEvent = useMemo(() => {
+        return monthEvent.reduce((acc, eventItem) => {
+            const key = eventItem.day;
+            if (!acc[key]) acc[key] = [];
+            acc[key].push(eventItem.color);
+            return acc;
+        }, {} as Record<number, string[]>);
+    }, [monthEvent]); //그리고 나는 이걸 이해하지 못했다
+    //뭐요 나 프론트 원래 아니야!
+    console.log(monthEvent);
+
 
     return(
         <div className='body'>
             <div className='calendar'>
                 <header className='nav'>
-                    <button className='month_nav' onClick={prevMonth}></button>
+                    <button className='month_nav' onClick={prevMonth}><img src={left_img} /></button>
                     <div className="month">{month.getMonth() + 1}</div>
-                    <button className='month_nav' onClick={nextMonth}></button>
+                    <button className='month_nav' onClick={nextMonth}><img src={right_img} /></button>
                 </header>
                 <Weeks />
                 <ul className="days">
-                    {days.map(({ date, day, isCurrentMonth, isWeekend }) => (
-                        <li
+                    {days.map(({ date, day, isCurrentMonth, isWeekend }) => {
+                        const relatedEvent = groupedEvent[day]
+
+                        return(<div
                             key={date.toISOString()}
                             className={`${isCurrentMonth ? "current_month" : "adjacent_month"} 
                                 ${isWeekend ? isWeekend - 1 ? "saturday": "sunday" : "weekdays"}`}
-                        >{day}</li>
-                    ))}
+                        >{day}
+                        {isCurrentMonth && relatedEvent?.map((ev, idx) => {return (<div key={idx.toString()} className={`line ${ev}`}/>);})}
+                        </div>
+                    )})}
                 </ul>
             </div>
             {AIIsOpen || 
-                <Schedule mon={month.getMonth() + 1} scheduleData={scheduleData}/>
+                <Schedule scheduleData={monthEvent}/>
             }
             {AIIsOpen && 
                 <AI_white isVisible={AIIsVisible} open_toggle={AI_toggle} handleOrder={handleOrder} handleClick={handleClick}/>

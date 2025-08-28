@@ -13,7 +13,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    padding: 0 0 0 0;
+    padding: 0 30px;
 }
 
 .month {
@@ -27,8 +27,15 @@
 .month_nav {
     font-size: 1.5em;
     text-align: center;
-    height: 79px;
+    vertical-align: bottom;
+    height: 70px;
     width: 55px;
+    padding: 10px 10px;
+}
+
+img{
+    top: 0px;
+    left: 20px;
 }
 
 
@@ -70,16 +77,22 @@
 
     .current_month{
         font-size: 1em;
-        height: calc(721px / 5);
+        height: calc(721px / 7);
         width: calc(690px / 7);
         vertical-align: top;
         text-align: center;
         list-style-type: none;
+
+        .line{
+            height: 20px;
+            width: 100%;
+            border-radius: 15px;
+        }
     }
 
     .adjacent_month{
         font-size: 1em;
-        height: calc(721px / 5);
+        height: calc(721px / 7);
         width: calc(690px / 7);
         vertical-align: top;
         text-align: center;
